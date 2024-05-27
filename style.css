@@ -1,0 +1,71 @@
+body {
+    background-color: #000;
+    color: #00ff00;
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#plain-terminal {
+    /* border: 2px solid yellow; */
+        
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    min-height: 60%;
+}
+
+#terminal {
+    background-color: #000;
+    width: 100%;
+    height: 50%;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow-y: auto;
+}
+
+#output {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+#input-line {
+    display: flex;
+    align-items: center;
+}
+
+#prompt {
+    margin-right: 10px;
+}
+
+#input {
+    background-color: #000;
+    color: #00ff00;
+    border: none;
+    outline: none;
+    width: 100%;    
+    letter-spacing: 0.15vw;
+    font-size: 0.95rem;
+}
+
+#input.blinking-cursor::after {
+    content: '_';
+    position: absolute;
+    right: 0;
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    from, to {
+        color: transparent;
+    }
+    50% {
+        color: #00ff00;
+    }
+}
