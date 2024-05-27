@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const input = document.getElementById("input");
   const output = document.getElementById("output");
   const terminal = document.getElementById("terminal");
-  const MAX_LINES = 22;
+  var MAX_LINES = 22;
 
   input.addEventListener("keydown", function (event) {
     if (event.key === "Enter") {
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function getCommandResponse(command) {
     switch (command.toLowerCase()) {
       case "help":
-        return "Available commands: help, about, contact, clear";
+        return "Available commands: help, about, contact, clear, hide";
       case "about":
         return "This is a terminal-like website created as an example.";
       case "contact":
@@ -53,6 +53,9 @@ document.addEventListener("DOMContentLoaded", function () {
       case "clear":
         clearTerminal();
         return "";
+      case "hide":
+        hideBanner();
+        return "Banner is hidden";      
       default:
         return 'Command not found. Type "help" for a list of commands.';
     }
@@ -65,8 +68,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  function clearTerminal() {
-    const output = document.getElementById("output");
+  function hideBanner() {
+    const banner = document.getElementById("plain-terminal");
+    banner.style.display = "none";
+    terminal.style.height = "100%";
+    MAX_LINES = 48;
+  }  
+
+  function clearTerminal() {    
     while (output.firstChild) {
       output.removeChild(output.firstChild);
     }
